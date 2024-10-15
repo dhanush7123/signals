@@ -1,11 +1,6 @@
-clc; close all; clear all;
-n1=-2:1:2;
-y1=[zeros(1,2),ones(1,1),zeros(1,2)];
-subplot(3,3,1);
-stem(n1,y1);
-xlabel("Time")
-ylabel("Amplitude")
-title('unit impulse');
+clc; close all; 
+
+
 
 
 n2=input('enter the n2 value');
@@ -16,6 +11,15 @@ plot(t2,y2);
 title('unit step');
 xlabel("Time (sec)")
 ylabel("Amplitude")
+
+
+n1=-2:1:2;
+y1=[zeros(1,2),ones(1,1),zeros(1,2)];
+subplot(3,3,1);
+stem(n1,y1);
+xlabel("Time")
+ylabel("Amplitude")
+title('unit impulse');
 
 
 n3=input('enter the n3 value');
@@ -43,4 +47,3 @@ plot(t5,x5);
 title('Gaussian Pulse Signal');
 xlabel('Time (s)');
 ylabel('Amplitude');
-
