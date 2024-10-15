@@ -1,0 +1,37 @@
+x=linspace(-2,2);
+ranges=abs((1.5).*x.^2+5);
+ranges(45:55)=3.5;
+angles=linspace(-pi/2,pi/2,numel(ranges));
+scan=lidarScan(ranges,angles);
+plot(scan)
+
+clc; % Clear command window
+clear all; % Clear workspace
+close all; % Close all figure windows
+% Create a white (1) and black (0) square
+w = ones(64, 64);
+b = zeros(64, 64);
+% Define two binary images by arranging white and black squares
+bin1 = [w b w b; b w b w; w b w b; b w b w];
+
+bin2 = [w b w b; w b w b; w b w b; w b w b];
+% Display the original binary images
+subplot(2, 2, 1);
+imshow(bin1); % Using imshow for displaying images
+title(’Binary Image 1’);
+subplot(2, 2, 2);
+imshow(bin2);
+title(’Binary Image 2’);
+% Save the binary images as .tif files
+imwrite(bin1, ’bin_image1.tif’);
+imwrite(bin2, ’bin_image2.tif’);
+% Invert the binary images
+i1 = ~bin1;
+i2 = ~bin2;
+% Display the inverted binary images
+subplot(2, 2, 3);
+imshow(i1);
+title(’Inverted Image 1’);
+subplot(2, 2, 4);
+imshow(i2);
+title(’Inverted Image 2’);
