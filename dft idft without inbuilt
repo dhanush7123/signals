@@ -1,0 +1,32 @@
+x = [1, 2, 3, 4];
+N = length(x); 
+X = zeros(1, N);
+for k = 0:N-1
+    for n = 0:N-1
+        X(k+1) = X(k+1) + x(n+1) * exp(-1j * 2 * pi * k * n / N);
+    end
+end
+x_reconstructed = zeros(1, N);
+for n = 0:N-1
+    for k = 0:N-1
+        x_reconstructed(n+1) = x_reconstructed(n+1) + X(k+1) * exp(1j * 2 * pi * k * n / N);
+    end
+end
+x_reconstructed = x_reconstructed / N;
+figure;
+subplot(2,1,1);
+stem(0:N-1, abs(X), 'LineWidth', 2);
+title('Magnitude Plot of DFT');
+xlabel('Frequency Index (k)');
+ylabel('Magnitude');
+grid on;
+subplot(2,1,2);
+stem(0:N-1, angle(X), 'LineWidth', 2);
+title('Phase Plot of DFT');
+xlabel('Frequency Index (k)');
+ylabel('Phase (radians)');
+grid on;
+disp('DFT of x(n):');
+disp(X);
+disp('Reconstructed x(n) from IDFT:');
+disp(x_reconstructed);
